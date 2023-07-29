@@ -10,5 +10,6 @@
         <property name="hibernate.connection.password">1234</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     </session-factory>
 </hibernate-configuration>

@@ -1,15 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url"></property>
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-  </session-factory>
+        <!--<property name="connection.url"/>
+        <property name="connection.driver_class"/>
+        &lt;!&ndash; <property name="connection.username"/> &ndash;&gt;
+        &lt;!&ndash; <property name="connection.password"/> &ndash;&gt;
+
+        &lt;!&ndash; DB schema will be updated if needed &ndash;&gt;
+        &lt;!&ndash; <property name="hibernate.hbm2ddl.auto">update</property> &ndash;&gt;-->
+    </session-factory>
 </hibernate-configuration>

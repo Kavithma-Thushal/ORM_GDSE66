@@ -24,5 +24,6 @@ public class AppInitializer {
         session.save(customer);
         transaction.commit();
         session.close();
+
     }
 }

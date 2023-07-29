@@ -1,4 +1,4 @@
-package lk.ijse.gdse66.hibernate.lib.entity;
+package lk.ijse.gdse66.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

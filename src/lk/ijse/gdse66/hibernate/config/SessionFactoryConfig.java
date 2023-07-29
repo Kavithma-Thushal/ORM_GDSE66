@@ -1,6 +1,6 @@
 package lk.ijse.gdse66.hibernate.config;
 
-import lk.ijse.gdse66.hibernate.lib.entity.Customer;
+import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

@@ -5,14 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url"></property>
-
-        <!--<property name="connection.url"/>
-        <property name="connection.driver_class"/>
-        &lt;!&ndash; <property name="connection.username"/> &ndash;&gt;
-        &lt;!&ndash; <property name="connection.password"/> &ndash;&gt;
-
-        &lt;!&ndash; DB schema will be updated if needed &ndash;&gt;
-        &lt;!&ndash; <property name="hibernate.hbm2ddl.auto">update</property> &ndash;&gt;-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/orm_gdse66</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1234</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>

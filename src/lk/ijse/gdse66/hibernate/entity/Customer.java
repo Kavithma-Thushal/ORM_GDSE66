@@ -14,16 +14,6 @@ import javax.persistence.Table;
 @Table(name = "customer")
 public class Customer {
 
-    public Customer() {
-    }
-
-    public Customer(int id, String name, String address, double salary) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.salary = salary;
-    }
-
     @Id
     @Column(name = "cusId")
     private int id;
@@ -33,6 +23,16 @@ public class Customer {
     private String address;
     @Column(name = "cusSalary")
     private double salary;
+
+    public Customer() {
+    }
+
+    public Customer(int id, String name, String address, double salary) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.salary = salary;
+    }
 
     public int getId() {
         return id;

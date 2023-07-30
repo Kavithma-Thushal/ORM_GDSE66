@@ -31,10 +31,17 @@ public class SessionFactoryConfig {
     }
 
     public Session getSession() {
+
+        // Creates a Service Registry
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
+
+        // Creates a Metadata Object
         Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
-        //SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+
+        // Creates the Session Factory
         SessionFactory sessionFactory = metadata.buildSessionFactory();
+
+        // Opens a new Session and Returns
         return sessionFactory.openSession();
     }
 }

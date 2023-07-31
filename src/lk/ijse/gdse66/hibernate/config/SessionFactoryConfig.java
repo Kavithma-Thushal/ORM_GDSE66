@@ -33,10 +33,16 @@ public class SessionFactoryConfig {
     public Session getSession() {
 
         // Creates a Service Registry
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                .configure()
+                .build();
 
         // Creates a Metadata Object
-        Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE).build();
+        Metadata metadata = new MetadataSources(serviceRegistry)
+                .addAnnotatedClass(Customer.class)
+                .getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
+                .build();
 
         // Creates the Session Factory
         SessionFactory sessionFactory = metadata.buildSessionFactory();

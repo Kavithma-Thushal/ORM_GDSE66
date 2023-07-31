@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="orm_gdse66@localhost" uuid="443e99fd-6cba-4942-938c-75dd8fb61e9a">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="c2935842-0f8d-42a9-9bf6-405ad8765223">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/IJSE/Workspace/2nd Sem Repo/ORM_GDSE66/src/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/orm_gdse66</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

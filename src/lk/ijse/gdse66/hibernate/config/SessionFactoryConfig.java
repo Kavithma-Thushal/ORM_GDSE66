@@ -3,11 +3,10 @@ package lk.ijse.gdse66.hibernate.config;
 import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * @author : Kavithma Thushal
@@ -30,22 +29,19 @@ public class SessionFactoryConfig {
         return (sessionFactoryConfig == null) ? sessionFactoryConfig = new SessionFactoryConfig() : sessionFactoryConfig;
     }
 
-    public Session getSession() {
+    public Session getSession() throws IOException {
 
-        // Creates a Service Registry
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .configure()
-                .build();
+        // Configuration object
+        Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(Customer.class);
 
-        // Creates a Metadata Object
-        Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(Customer.class)
-                .getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
-                .build();
+        Properties properties = new Properties();
+        properties.load(ClassLoader.getSystemResourceAsStream("hibernate.properties"));
+        configuration.mergeProperties(properties);
 
-        // Creates the Session Factory
-        SessionFactory sessionFactory = metadata.buildSessionFactory();
+        // Session Factory object
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+
 
         // Opens a new Session and Returns
         return sessionFactory.openSession();

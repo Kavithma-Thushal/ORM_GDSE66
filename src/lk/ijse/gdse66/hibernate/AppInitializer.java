@@ -5,16 +5,18 @@ import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.io.IOException;
+
 /**
  * @author : Kavithma Thushal
  * @project : ORM_GDSE66
  * @since : 10:14 AM - 7/29/2023
  **/
 public class AppInitializer {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Customer customer = new Customer();
-        customer.setId(4);
+        customer.setId(5);
         customer.setName("Thushal");
         customer.setAddress("Galle");
         customer.setSalary(25000.00);
@@ -22,7 +24,7 @@ public class AppInitializer {
         //Save
         Session saveSession = SessionFactoryConfig.getInstance().getSession();
         Transaction saveTransaction = saveSession.beginTransaction();
-        saveSession.save(customer);     //persists (saves) customer object in DB
+        saveSession.save(customer);
         saveTransaction.commit();
         saveSession.close();
     }

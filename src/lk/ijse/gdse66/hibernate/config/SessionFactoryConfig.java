@@ -42,7 +42,6 @@ public class SessionFactoryConfig {
         // Session Factory object
         SessionFactory sessionFactory = configuration.buildSessionFactory();
 
-
         // Opens a new Session and Returns
         return sessionFactory.openSession();
     }

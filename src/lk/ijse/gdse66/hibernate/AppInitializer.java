@@ -22,10 +22,10 @@ public class AppInitializer {
         customer.setSalary(25000.00);
 
         //Save
-        Session saveSession = SessionFactoryConfig.getInstance().getSession();
-        Transaction saveTransaction = saveSession.beginTransaction();
-        saveSession.save(customer);
-        saveTransaction.commit();
-        saveSession.close();
+        Session session = SessionFactoryConfig.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(customer);
+        transaction.commit();
+        session.close();
     }
 }

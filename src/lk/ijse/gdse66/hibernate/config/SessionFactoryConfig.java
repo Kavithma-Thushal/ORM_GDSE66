@@ -3,6 +3,11 @@ package lk.ijse.gdse66.hibernate.config;
 import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
@@ -21,26 +26,25 @@ public class SessionFactoryConfig {
     }
 
     public static SessionFactoryConfig getInstance() {
-        /*if (sessionFactoryConfig == null) {
-            return sessionFactoryConfig = new SessionFactoryConfig();
-        }
-        return sessionFactoryConfig;*/
-
         return (sessionFactoryConfig == null) ? sessionFactoryConfig = new SessionFactoryConfig() : sessionFactoryConfig;
     }
 
     public Session getSession() throws IOException {
 
-        // Configuration object
-        Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(Customer.class);
+        // Service Registry
+        StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
+                .configure()
+                .build();
 
-        Properties properties = new Properties();
-        properties.load(ClassLoader.getSystemResourceAsStream("hibernate.properties"));
-        configuration.mergeProperties(properties);
+        // Metadata Object
+        Metadata metadata = new MetadataSources(standardServiceRegistry)
+                .addAnnotatedClass(Customer.class)
+                .getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
+                .build();
 
         // Session Factory object
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        SessionFactory sessionFactory = metadata.buildSessionFactory();
 
         // Opens a new Session and Returns
         return sessionFactory.openSession();

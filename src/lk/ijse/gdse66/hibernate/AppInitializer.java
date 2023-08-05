@@ -16,7 +16,7 @@ public class AppInitializer {
     public static void main(String[] args) throws IOException {
 
         Customer customer = new Customer();
-        customer.setId(5);
+        customer.setId(1);
         customer.setName("Thushal");
         customer.setAddress("Galle");
         customer.setSalary(25000.00);

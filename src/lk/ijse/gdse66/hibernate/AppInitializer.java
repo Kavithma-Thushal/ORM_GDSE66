@@ -26,7 +26,7 @@ public class AppInitializer {
 
     private static Customer getCustomer() {
         Customer customer = new Customer();
-        customer.setId(1);
+        customer.setId(2);
         customer.setName("Thushal");
         customer.setAddress("Galle");
         customer.setSalary(12000);

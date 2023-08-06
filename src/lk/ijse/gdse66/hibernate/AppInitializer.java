@@ -29,11 +29,18 @@ public class AppInitializer {
             System.out.println("Customer is not searched!");
         }*/
 
-        boolean isUpdated = CustomerRepo.updateCustomer(customer);
+        /*boolean isUpdated = CustomerRepo.updateCustomer(customer);
         if(isUpdated==true){
             System.out.println("Customer updated successfully!");
         }else {
             System.out.println("Customer is not updated!");
+        }*/
+
+        boolean isDeleted = CustomerRepo.deleteCustomer(customer);
+        if (isDeleted == true) {
+            System.out.println("Customer deleted successfully!");
+        } else {
+            System.out.println("Customer is not deleted!");
         }
     }
 

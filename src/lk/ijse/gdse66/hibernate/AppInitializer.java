@@ -57,17 +57,23 @@ public class AppInitializer {
         customer.setAddress("Galle");
         customer.setSalary(12000);
 
+        extracted(customer);
+        extracted1(customer);
+        return customer;
+    }
+
+    private static void extracted(Customer customer) {
         NameIdentifier nameIdentifier = new NameIdentifier();
         nameIdentifier.setFirstName("Meepe Gamage Don");
         nameIdentifier.setMiddleName("Kavithma");
         nameIdentifier.setLastName("Thushal");
         customer.setNameIdentifier(nameIdentifier);
+    }
 
+    private static void extracted1(Customer customer) {
         List<MobileNo> mobileNos = new ArrayList<>();
         MobileNo mobileNo1 = new MobileNo("Home", "0912232212");
         mobileNos.add(mobileNo1);
         customer.setPhoneNumbers(mobileNos);
-
-        return customer;
     }
 }

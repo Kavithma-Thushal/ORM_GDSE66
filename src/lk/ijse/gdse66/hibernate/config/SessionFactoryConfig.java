@@ -3,15 +3,9 @@ package lk.ijse.gdse66.hibernate.config;
 import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
-import java.util.Properties;
 
 /**
  * @author : Kavithma Thushal
@@ -21,8 +15,12 @@ import java.util.Properties;
 public class SessionFactoryConfig {
 
     private static SessionFactoryConfig sessionFactoryConfig;
+    private final SessionFactory sessionFactory;
 
     private SessionFactoryConfig() {
+        sessionFactory = new Configuration()
+                .addAnnotatedClass(Customer.class)
+                .configure().buildSessionFactory();
     }
 
     public static SessionFactoryConfig getInstance() {
@@ -30,16 +28,6 @@ public class SessionFactoryConfig {
     }
 
     public Session getSession() throws IOException {
-
-        // Configuration object
-        Configuration configuration = new Configuration()
-                .addAnnotatedClass(Customer.class)
-                .configure();
-
-        // Session Factory object
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        // Opens a new Session and Returns
         return sessionFactory.openSession();
     }
 }

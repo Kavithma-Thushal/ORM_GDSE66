@@ -14,12 +14,7 @@ import java.io.IOException;
  **/
 public class AppInitializer {
     public static void main(String[] args) throws IOException {
-
-        Customer customer = new Customer();
-        customer.setId(1);
-        customer.setName("Thushal");
-        customer.setAddress("Galle");
-        customer.setSalary(12000);
+        Customer customer = getCustomer();
 
         //Save
         Session session = SessionFactoryConfig.getInstance().getSession();
@@ -27,5 +22,14 @@ public class AppInitializer {
         session.save(customer);
         transaction.commit();
         session.close();
+    }
+
+    private static Customer getCustomer() {
+        Customer customer = new Customer();
+        customer.setId(1);
+        customer.setName("Thushal");
+        customer.setAddress("Galle");
+        customer.setSalary(12000);
+        return customer;
     }
 }

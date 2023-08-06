@@ -32,9 +32,9 @@ public class SessionFactoryConfig {
     public Session getSession() throws IOException {
 
         // Configuration object
-        Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(Customer.class);
-        configuration.configure();
+        Configuration configuration = new Configuration()
+                .addAnnotatedClass(Customer.class)
+                .configure();
 
         // Session Factory object
         SessionFactory sessionFactory = configuration.buildSessionFactory();

@@ -19,7 +19,7 @@ public class AppInitializer {
         customer.setId(1);
         customer.setName("Thushal");
         customer.setAddress("Galle");
-        customer.setSalary(25000.00);
+        customer.setSalary(12000);
 
         //Save
         Session session = SessionFactoryConfig.getInstance().getSession();

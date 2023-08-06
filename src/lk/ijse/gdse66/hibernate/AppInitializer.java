@@ -1,9 +1,11 @@
 package lk.ijse.gdse66.hibernate;
 
 import lk.ijse.gdse66.hibernate.entity.Customer;
+import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
 import lk.ijse.gdse66.hibernate.repo.CustomerRepo;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 /**
  * @author : Kavithma Thushal
@@ -46,11 +48,19 @@ public class AppInitializer {
     }
 
     private static Customer getCustomer() {
+
         Customer customer = new Customer();
-        customer.setId(3);
+        customer.setId(1);
         customer.setName("Thushal");
         customer.setAddress("Galle");
         customer.setSalary(12000);
+
+        NameIdentifier nameIdentifier = new NameIdentifier();
+        nameIdentifier.setFirstName("Meepe Gamage Don");
+        nameIdentifier.setMiddleName("Kavithma");
+        nameIdentifier.setLastName("Thushal");
+        customer.setNameIdentifier(nameIdentifier);
+
         return customer;
     }
 }

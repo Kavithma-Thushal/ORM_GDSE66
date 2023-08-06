@@ -1,9 +1,10 @@
 package lk.ijse.gdse66.hibernate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * @author : Kavithma Thushal
@@ -15,23 +16,30 @@ import javax.persistence.Table;
 public class Customer {
 
     @Id
-    @Column(name = "cusId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cus_id")
     private int id;
-    @Column(name = "cusName")
+    @Column(name = "cus_name")
     private String name;
-    @Column(name = "cusAddress")
+    @Column(name = "cus_address")
     private String address;
-    @Column(name = "cusSalary")
+    @Column(name = "cus_salary")
     private double salary;
+    @Transient
+    private String dob;
+    @CreationTimestamp
+    private Timestamp createdDataTime;
+    private NameIdentifier nameIdentifier;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, double salary) {
+    public Customer(int id, String name, String address, double salary, NameIdentifier nameIdentifier) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
+        this.nameIdentifier = nameIdentifier;
     }
 
     public int getId() {
@@ -66,6 +74,14 @@ public class Customer {
         this.salary = salary;
     }
 
+    public NameIdentifier getNameIdentifier() {
+        return nameIdentifier;
+    }
+
+    public void setNameIdentifier(NameIdentifier nameIdentifier) {
+        this.nameIdentifier = nameIdentifier;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -73,6 +89,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
+                ", nameIdentifier=" + nameIdentifier +
                 '}';
     }
 }

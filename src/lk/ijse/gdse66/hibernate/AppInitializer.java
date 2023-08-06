@@ -1,11 +1,13 @@
 package lk.ijse.gdse66.hibernate;
 
 import lk.ijse.gdse66.hibernate.entity.Customer;
+import lk.ijse.gdse66.hibernate.entity.embedded.MobileNo;
 import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
 import lk.ijse.gdse66.hibernate.repo.CustomerRepo;
 
 import java.io.IOException;
-import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -18,9 +20,9 @@ public class AppInitializer {
         CustomerRepo customerRepo = new CustomerRepo();
 
         boolean isSaved = customerRepo.saveCustomer(customer);
-        if(isSaved==true){
+        if (isSaved == true) {
             System.out.println("Customer saved successfully!");
-        }else {
+        } else {
             System.out.println("Customer is not saved!");
         }
 
@@ -60,6 +62,11 @@ public class AppInitializer {
         nameIdentifier.setMiddleName("Kavithma");
         nameIdentifier.setLastName("Thushal");
         customer.setNameIdentifier(nameIdentifier);
+
+        List<MobileNo> mobileNos = new ArrayList<>();
+        MobileNo mobileNo1 = new MobileNo("Home", "0912232212");
+        mobileNos.add(mobileNo1);
+        customer.setPhoneNumbers(mobileNos);
 
         return customer;
     }

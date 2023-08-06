@@ -9,7 +9,6 @@ import javax.persistence.Embeddable;
  **/
 @Embeddable
 public class NameIdentifier {
-
     private String firstName;
     private String middleName;
     private String lastName;

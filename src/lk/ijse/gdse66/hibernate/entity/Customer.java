@@ -1,10 +1,13 @@
 package lk.ijse.gdse66.hibernate.entity;
 
+import lk.ijse.gdse66.hibernate.entity.embedded.MobileNo;
 import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -30,16 +33,20 @@ public class Customer {
     @CreationTimestamp
     private Timestamp createdDataTime;
     private NameIdentifier nameIdentifier;
+    @ElementCollection
+    @CollectionTable(name = "cus_no", joinColumns = @JoinColumn(name = "cus_id"))
+    private List<MobileNo> phoneNumbers = new ArrayList<>();
 
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, double salary, NameIdentifier nameIdentifier) {
+    public Customer(int id, String name, String address, double salary, NameIdentifier nameIdentifier, List<MobileNo> phoneNumbers) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
         this.nameIdentifier = nameIdentifier;
+        this.phoneNumbers = phoneNumbers;
     }
 
     public int getId() {
@@ -82,6 +89,14 @@ public class Customer {
         this.nameIdentifier = nameIdentifier;
     }
 
+    public List<MobileNo> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<MobileNo> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -90,6 +105,7 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
                 ", nameIdentifier=" + nameIdentifier +
+                ", phoneNumbers=" + phoneNumbers +
                 '}';
     }
 }

@@ -15,12 +15,12 @@ public class AppInitializer {
         Customer customer = getCustomer();
         CustomerRepo customerRepo = new CustomerRepo();
 
-        /*boolean isSaved = customerRepo.saveCustomer(customer);
+        boolean isSaved = customerRepo.saveCustomer(customer);
         if(isSaved==true){
             System.out.println("Customer saved successfully!");
         }else {
             System.out.println("Customer is not saved!");
-        }*/
+        }
 
         /*Customer searchedCustomer = customerRepo.searchCustomer();
         if (searchedCustomer != null) {
@@ -47,8 +47,8 @@ public class AppInitializer {
 
     private static Customer getCustomer() {
         Customer customer = new Customer();
-        customer.setId(4);
-        customer.setName("Pathum");
+        customer.setId(3);
+        customer.setName("Thushal");
         customer.setAddress("Galle");
         customer.setSalary(12000);
         return customer;

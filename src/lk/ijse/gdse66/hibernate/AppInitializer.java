@@ -2,6 +2,7 @@ package lk.ijse.gdse66.hibernate;
 
 import lk.ijse.gdse66.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse66.hibernate.entity.Customer;
+import lk.ijse.gdse66.hibernate.repo.CustomerRepo;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,12 +17,12 @@ public class AppInitializer {
     public static void main(String[] args) throws IOException {
         Customer customer = getCustomer();
 
-        //Save
-        Session session = SessionFactoryConfig.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(customer);
-        transaction.commit();
-        session.close();
+        boolean isSaved = CustomerRepo.saveCustomer(customer);
+        if(isSaved==true){
+            System.out.println("Customer saved successfully!");
+        }else {
+            System.out.println("Customer is not saved!");
+        }
     }
 
     private static Customer getCustomer() {

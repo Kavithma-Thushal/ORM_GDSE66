@@ -40,7 +40,6 @@ public class SessionFactoryConfig {
         Metadata metadata = new MetadataSources(standardServiceRegistry)
                 .addAnnotatedClass(Customer.class)
                 .getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
 
         // Session Factory object

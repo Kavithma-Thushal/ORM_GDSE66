@@ -43,4 +43,20 @@ public class CustomerRepo {
             return null;
         }
     }
+
+    public static boolean updateCustomer(Customer customer) {
+        Session session = null;
+        try {
+            session = SessionFactoryConfig.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            session.update(customer);
+            transaction.commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.close();
+            return false;
+        }
+    }
 }

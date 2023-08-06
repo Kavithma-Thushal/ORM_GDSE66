@@ -16,24 +16,31 @@ public class AppInitializer {
 
         /*boolean isSaved = CustomerRepo.saveCustomer(customer);
         if(isSaved==true){
-            System.out.println("Customer saveded successfully!");
+            System.out.println("Customer saved successfully!");
         }else {
-            System.out.println("Customer is not saveded!");
+            System.out.println("Customer is not saved!");
         }*/
 
-        Customer searchedCustomer = CustomerRepo.searchCustomer();
+        /*Customer searchedCustomer = CustomerRepo.searchCustomer();
         if (searchedCustomer != null) {
             System.out.println(searchedCustomer);
             System.out.println("Customer searched successfully!");
         } else {
             System.out.println("Customer is not searched!");
+        }*/
+
+        boolean isUpdated = CustomerRepo.updateCustomer(customer);
+        if(isUpdated==true){
+            System.out.println("Customer updated successfully!");
+        }else {
+            System.out.println("Customer is not updated!");
         }
     }
 
     private static Customer getCustomer() {
         Customer customer = new Customer();
         customer.setId(3);
-        customer.setName("Thushal");
+        customer.setName("Kamal");
         customer.setAddress("Galle");
         customer.setSalary(12000);
         return customer;

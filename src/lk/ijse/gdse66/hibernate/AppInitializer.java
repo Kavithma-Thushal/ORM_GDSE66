@@ -13,15 +13,16 @@ import java.io.IOException;
 public class AppInitializer {
     public static void main(String[] args) throws IOException {
         Customer customer = getCustomer();
+        CustomerRepo customerRepo = new CustomerRepo();
 
-        /*boolean isSaved = CustomerRepo.saveCustomer(customer);
+        /*boolean isSaved = customerRepo.saveCustomer(customer);
         if(isSaved==true){
             System.out.println("Customer saved successfully!");
         }else {
             System.out.println("Customer is not saved!");
         }*/
 
-        /*Customer searchedCustomer = CustomerRepo.searchCustomer();
+        /*Customer searchedCustomer = customerRepo.searchCustomer();
         if (searchedCustomer != null) {
             System.out.println(searchedCustomer);
             System.out.println("Customer searched successfully!");
@@ -29,25 +30,25 @@ public class AppInitializer {
             System.out.println("Customer is not searched!");
         }*/
 
-        /*boolean isUpdated = CustomerRepo.updateCustomer(customer);
+        /*boolean isUpdated = customerRepo.updateCustomer(customer);
         if(isUpdated==true){
             System.out.println("Customer updated successfully!");
         }else {
             System.out.println("Customer is not updated!");
         }*/
 
-        boolean isDeleted = CustomerRepo.deleteCustomer(customer);
+        /*boolean isDeleted = customerRepo.deleteCustomer(customer);
         if (isDeleted == true) {
             System.out.println("Customer deleted successfully!");
         } else {
             System.out.println("Customer is not deleted!");
-        }
+        }*/
     }
 
     private static Customer getCustomer() {
         Customer customer = new Customer();
-        customer.setId(3);
-        customer.setName("Kamal");
+        customer.setId(4);
+        customer.setName("Pathum");
         customer.setAddress("Galle");
         customer.setSalary(12000);
         return customer;

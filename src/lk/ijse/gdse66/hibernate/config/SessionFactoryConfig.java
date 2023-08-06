@@ -27,7 +27,7 @@ public class SessionFactoryConfig {
         return (sessionFactoryConfig == null) ? sessionFactoryConfig = new SessionFactoryConfig() : sessionFactoryConfig;
     }
 
-    public Session getSession() throws IOException {
+    public Session getSession(){
         return sessionFactory.openSession();
     }
 }

@@ -5,6 +5,8 @@ import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.io.IOException;
+
 /**
  * @author : Kavithma Thushal
  * @project : ORM_GDSE66
@@ -12,11 +14,16 @@ import org.hibernate.Transaction;
  **/
 public class CustomerRepo {
 
-    public static boolean saveCustomer(Customer customer) {
-        Session session = null;
+    private final Session session;
+    private Transaction transaction;
+
+    public CustomerRepo() throws IOException {
+        session = SessionFactoryConfig.getInstance().getSession();
+        transaction = session.beginTransaction();
+    }
+
+    public boolean saveCustomer(Customer customer) {
         try {
-            session = SessionFactoryConfig.getInstance().getSession();
-            Transaction transaction = session.beginTransaction();
             session.save(customer);
             transaction.commit();
             session.close();
@@ -28,11 +35,8 @@ public class CustomerRepo {
         }
     }
 
-    public static Customer searchCustomer() {
-        Session session = null;
+    public Customer searchCustomer() {
         try {
-            session = SessionFactoryConfig.getInstance().getSession();
-            Transaction transaction = session.beginTransaction();
             Customer customer = session.get(Customer.class, 1);
             transaction.commit();
             session.close();
@@ -44,11 +48,8 @@ public class CustomerRepo {
         }
     }
 
-    public static boolean updateCustomer(Customer customer) {
-        Session session = null;
+    public boolean updateCustomer(Customer customer) {
         try {
-            session = SessionFactoryConfig.getInstance().getSession();
-            Transaction transaction = session.beginTransaction();
             session.update(customer);
             transaction.commit();
             session.close();
@@ -60,11 +61,8 @@ public class CustomerRepo {
         }
     }
 
-    public static boolean deleteCustomer(Customer customer) {
-        Session session = null;
+    public boolean deleteCustomer(Customer customer) {
         try {
-            session = SessionFactoryConfig.getInstance().getSession();
-            Transaction transaction = session.beginTransaction();
             session.delete(customer);
             transaction.commit();
             session.close();

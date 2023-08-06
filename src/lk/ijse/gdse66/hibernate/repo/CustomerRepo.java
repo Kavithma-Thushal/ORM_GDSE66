@@ -5,8 +5,6 @@ import lk.ijse.gdse66.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.io.IOException;
-
 /**
  * @author : Kavithma Thushal
  * @project : ORM_GDSE66
@@ -14,18 +12,35 @@ import java.io.IOException;
  **/
 public class CustomerRepo {
 
-    public static boolean saveCustomer(Customer customer) throws IOException {
-        Session session = SessionFactoryConfig.getInstance().getSession();
+    public static boolean saveCustomer(Customer customer) {
+        Session session = null;
         try {
+            session = SessionFactoryConfig.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             session.save(customer);
             transaction.commit();
             session.close();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             session.close();
             return false;
+        }
+    }
+
+    public static Customer searchCustomer() {
+        Session session = null;
+        try {
+            session = SessionFactoryConfig.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            Customer customer = session.get(Customer.class, 1);
+            transaction.commit();
+            session.close();
+            return customer;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.close();
+            return null;
         }
     }
 }

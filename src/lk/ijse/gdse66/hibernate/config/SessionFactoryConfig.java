@@ -31,19 +31,13 @@ public class SessionFactoryConfig {
 
     public Session getSession() throws IOException {
 
-        // Service Registry
-        StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
-                .configure()
-                .build();
-
-        // Metadata Object
-        Metadata metadata = new MetadataSources(standardServiceRegistry)
-                .addAnnotatedClass(Customer.class)
-                .getMetadataBuilder()
-                .build();
+        // Configuration object
+        Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(Customer.class);
+        configuration.configure();
 
         // Session Factory object
-        SessionFactory sessionFactory = metadata.buildSessionFactory();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
 
         // Opens a new Session and Returns
         return sessionFactory.openSession();

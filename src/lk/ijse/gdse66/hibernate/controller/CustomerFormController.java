@@ -31,6 +31,7 @@ public class CustomerFormController {
     private TextField txtAddress;
     @FXML
     private TextField txtSalary;
+    private CustomerRepo customerRepo;
 
     @FXML
     private void saveOnAction(ActionEvent actionEvent) {
@@ -40,7 +41,7 @@ public class CustomerFormController {
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        CustomerRepo customerRepo = new CustomerRepo();
+        customerRepo = new CustomerRepo();
         boolean isSaved = customerRepo.saveCustomer(customer);
         if (isSaved == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
@@ -51,16 +52,14 @@ public class CustomerFormController {
 
     @FXML
     private void searchOnAction(ActionEvent actionEvent) {
-        CustomerRepo customerRepo = new CustomerRepo();
+        customerRepo = new CustomerRepo();
         Customer searchedCustomer = customerRepo.searchCustomer(Integer.parseInt(txtId.getText()));
         if (searchedCustomer != null) {
             txtName.setText(String.valueOf(searchedCustomer.getName()));
             txtAddress.setText(String.valueOf(searchedCustomer.getAddress()));
             txtSalary.setText(String.valueOf(searchedCustomer.getSalary()));
-
-            System.out.println("Customer searched successfully!");
         } else {
-            System.out.println("Customer is not searched!");
+            new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
     }
 
@@ -72,12 +71,12 @@ public class CustomerFormController {
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        CustomerRepo customerRepo = new CustomerRepo();
+        customerRepo = new CustomerRepo();
         boolean isUpdated = customerRepo.updateCustomer(customer);
-        if(isUpdated==true){
-            System.out.println("Customer updated successfully!");
-        }else {
-            System.out.println("Customer is not updated!");
+        if (isUpdated == true) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Customer is not updated!").show();
         }
     }
 
@@ -86,12 +85,12 @@ public class CustomerFormController {
         Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
 
-        CustomerRepo customerRepo = new CustomerRepo();
+        customerRepo = new CustomerRepo();
         boolean isDeleted = customerRepo.deleteCustomer(customer);
         if (isDeleted == true) {
-            System.out.println("Customer deleted successfully!");
+            new Alert(Alert.AlertType.INFORMATION, "Customer deleted successfully!").show();
         } else {
-            System.out.println("Customer is not deleted!");
+            new Alert(Alert.AlertType.ERROR, "Customer is not deleted!").show();
         }
     }
 

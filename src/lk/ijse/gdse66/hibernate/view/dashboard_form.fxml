@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse66.hibernate.controller.DashboardFormController">
+    <children>
+        <Label layoutX="189.0" layoutY="59.0" text="Thogakade POS">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Label>
+        <Button focusTraversable="false" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#customerOnAction" prefHeight="31.0" prefWidth="85.0" text="Customer" />
+        <Button focusTraversable="false" layoutX="449.0" layoutY="252.0" mnemonicParsing="false" onAction="#ordersOnAction" prefWidth="85.0" text="Orders" />
+        <Button focusTraversable="false" layoutX="258.0" layoutY="252.0" mnemonicParsing="false" onAction="#itemOnAction" prefHeight="31.0" prefWidth="85.0" text="Item" />
+    </children>
+</AnchorPane>

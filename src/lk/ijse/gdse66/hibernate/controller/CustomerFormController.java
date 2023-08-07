@@ -83,7 +83,16 @@ public class CustomerFormController {
 
     @FXML
     private void deleteOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer();
+        customer.setId(Integer.parseInt(txtId.getText()));
 
+        CustomerRepo customerRepo = new CustomerRepo();
+        boolean isDeleted = customerRepo.deleteCustomer(customer);
+        if (isDeleted == true) {
+            System.out.println("Customer deleted successfully!");
+        } else {
+            System.out.println("Customer is not deleted!");
+        }
     }
 
     @FXML

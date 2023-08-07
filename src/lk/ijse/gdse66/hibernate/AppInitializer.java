@@ -38,7 +38,7 @@ public class AppInitializer extends Application {
         nameIdentifier.setFirstName("Meepe Gamage Don");
         nameIdentifier.setMiddleName("Kavithma");
         nameIdentifier.setLastName("Thushal");
-        //customer.setNameIdentifier(nameIdentifier);
+        //customer.setNameIdentifier(nameIdentifier) ;
     }
 
     private static void extracted1(Customer customer) {

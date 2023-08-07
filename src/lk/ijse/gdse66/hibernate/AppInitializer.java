@@ -19,38 +19,6 @@ import java.util.List;
 public class AppInitializer extends Application {
     public static void main(String[] args) {
         launch(args);
-
-        //Customer customer = getCustomer();
-        //CustomerRepo customerRepo = new CustomerRepo();
-
-        /*boolean isSaved = customerRepo.saveCustomer(customer);
-        if (isSaved == true) {
-            System.out.println("Customer saved successfully!");
-        } else {
-            System.out.println("Customer is not saved!");
-        }*/
-
-        /*Customer searchedCustomer = customerRepo.searchCustomer();
-        if (searchedCustomer != null) {
-            System.out.println(searchedCustomer);
-            System.out.println("Customer searched successfully!");
-        } else {
-            System.out.println("Customer is not searched!");
-        }*/
-
-        /*boolean isUpdated = customerRepo.updateCustomer(customer);
-        if(isUpdated==true){
-            System.out.println("Customer updated successfully!");
-        }else {
-            System.out.println("Customer is not updated!");
-        }*/
-
-        /*boolean isDeleted = customerRepo.deleteCustomer(customer);
-        if (isDeleted == true) {
-            System.out.println("Customer deleted successfully!");
-        } else {
-            System.out.println("Customer is not deleted!");
-        }*/
     }
 
     public static Customer getCustomer() {

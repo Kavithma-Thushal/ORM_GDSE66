@@ -46,7 +46,7 @@ public class CustomerFormController {
         if (isSaved == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
         } else {
-            new Alert(Alert.AlertType.ERROR, "Customer is not saved!").show();
+            new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
     }
 
@@ -76,7 +76,7 @@ public class CustomerFormController {
         if (isUpdated == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
         } else {
-            new Alert(Alert.AlertType.ERROR, "Customer is not updated!").show();
+            new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
     }
 
@@ -90,7 +90,7 @@ public class CustomerFormController {
         if (isDeleted == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer deleted successfully!").show();
         } else {
-            new Alert(Alert.AlertType.ERROR, "Customer is not deleted!").show();
+            new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
     }
 

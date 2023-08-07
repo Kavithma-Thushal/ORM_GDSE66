@@ -1,27 +1,26 @@
 package lk.ijse.gdse66.hibernate.repo;
 
 import lk.ijse.gdse66.hibernate.config.SessionFactoryConfig;
-import lk.ijse.gdse66.hibernate.entity.Customer;
+import lk.ijse.gdse66.hibernate.entity.Item;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
  * @author : Kavithma Thushal
  * @project : ORM_GDSE66
- * @since : 1:32 PM - 8/6/2023
+ * @since : 8:04 PM - 8/7/2023
  **/
-public class CustomerRepo {
+public class ItemRepo {
     private final Session session;
     private Transaction transaction;
-
-    public CustomerRepo(){
+    public ItemRepo() {
         session = SessionFactoryConfig.getInstance().getSession();
         transaction = session.beginTransaction();
     }
 
-    public boolean saveCustomer(Customer customer) {
+    public boolean saveItem(Item item) {
         try {
-            session.save(customer);
+            session.save(item);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -33,19 +32,19 @@ public class CustomerRepo {
         }
     }
 
-    public Customer searchCustomer(int id) {
+    public Item searchItem(int code) {
         try {
-            Customer customer = session.get(Customer.class, id);
-            return customer;
+            Item item = session.get(Item.class, code);
+            return item;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public boolean updateCustomer(Customer customer) {
+    public boolean updateItem(Item item) {
         try {
-            session.update(customer);
+            session.update(item);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -57,9 +56,9 @@ public class CustomerRepo {
         }
     }
 
-    public boolean deleteCustomer(Customer customer) {
+    public boolean deleteItem(Item item) {
         try {
-            session.delete(customer);
+            session.delete(item);
             transaction.commit();
             return true;
         } catch (Exception e) {

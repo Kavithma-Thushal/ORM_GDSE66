@@ -14,7 +14,6 @@ import java.util.List;
 @Entity
 @Table(name = "customer")
 public class Customer {
-
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cus_id")

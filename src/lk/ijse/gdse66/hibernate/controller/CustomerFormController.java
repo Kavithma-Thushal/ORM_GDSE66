@@ -19,7 +19,7 @@ import java.io.IOException;
  * @project : ORM_GDSE66
  * @since : 7:25 AM - 8/7/2023
  **/
-public class CustomerFormControoler {
+public class CustomerFormController {
 
     @FXML
     private AnchorPane root;
@@ -51,12 +51,34 @@ public class CustomerFormControoler {
 
     @FXML
     private void searchOnAction(ActionEvent actionEvent) {
+        CustomerRepo customerRepo = new CustomerRepo();
+        Customer searchedCustomer = customerRepo.searchCustomer(Integer.parseInt(txtId.getText()));
+        if (searchedCustomer != null) {
+            txtName.setText(String.valueOf(searchedCustomer.getName()));
+            txtAddress.setText(String.valueOf(searchedCustomer.getAddress()));
+            txtSalary.setText(String.valueOf(searchedCustomer.getSalary()));
 
+            System.out.println("Customer searched successfully!");
+        } else {
+            System.out.println("Customer is not searched!");
+        }
     }
 
     @FXML
     private void updateOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer();
+        customer.setId(Integer.parseInt(txtId.getText()));
+        customer.setName(txtName.getText());
+        customer.setAddress(txtAddress.getText());
+        customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
+        CustomerRepo customerRepo = new CustomerRepo();
+        boolean isUpdated = customerRepo.updateCustomer(customer);
+        if(isUpdated==true){
+            System.out.println("Customer updated successfully!");
+        }else {
+            System.out.println("Customer is not updated!");
+        }
     }
 
     @FXML

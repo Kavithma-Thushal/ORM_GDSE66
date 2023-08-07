@@ -34,9 +34,9 @@ public class CustomerRepo {
         }
     }
 
-    public Customer searchCustomer() {
+    public Customer searchCustomer(int id) {
         try {
-            Customer customer = session.get(Customer.class, 1);
+            Customer customer = session.get(Customer.class, id);
             return customer;
         } catch (Exception e) {
             e.printStackTrace();

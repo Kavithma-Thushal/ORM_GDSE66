@@ -53,15 +53,15 @@ public class AppInitializer extends Application {
         }*/
     }
 
-    private static Customer getCustomer() {
+    public static Customer getCustomer() {
         Customer customer = new Customer();
         customer.setId(1);
         customer.setName("Thushal");
         customer.setAddress("Galle");
         customer.setSalary(12000);
 
-        //extracted(customer);
-        //extracted1(customer);
+        extracted(customer);
+        extracted1(customer);
         return customer;
     }
 
@@ -70,14 +70,14 @@ public class AppInitializer extends Application {
         nameIdentifier.setFirstName("Meepe Gamage Don");
         nameIdentifier.setMiddleName("Kavithma");
         nameIdentifier.setLastName("Thushal");
-        customer.setNameIdentifier(nameIdentifier);
+        //customer.setNameIdentifier(nameIdentifier);
     }
 
     private static void extracted1(Customer customer) {
         List<MobileNo> mobileNos = new ArrayList<>();
         MobileNo mobileNo1 = new MobileNo("Home", "0912232212");
         mobileNos.add(mobileNo1);
-        customer.setPhoneNumbers(mobileNos);
+        //customer.setPhoneNumbers(mobileNos);
     }
 
     @Override

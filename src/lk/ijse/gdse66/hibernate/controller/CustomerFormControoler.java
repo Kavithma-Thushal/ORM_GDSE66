@@ -4,10 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.gdse66.hibernate.entity.Customer;
+import lk.ijse.gdse66.hibernate.repo.CustomerRepo;
 
 import java.io.IOException;
 
@@ -31,7 +34,19 @@ public class CustomerFormControoler {
 
     @FXML
     private void saveOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer();
+        customer.setId(Integer.parseInt(txtId.getText()));
+        customer.setName(txtName.getText());
+        customer.setAddress(txtAddress.getText());
+        customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
+        CustomerRepo customerRepo = new CustomerRepo();
+        boolean isSaved = customerRepo.saveCustomer(customer);
+        if (isSaved == true) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Customer is not saved!").show();
+        }
     }
 
     @FXML

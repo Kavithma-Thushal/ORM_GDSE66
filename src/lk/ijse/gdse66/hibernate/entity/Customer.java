@@ -2,11 +2,8 @@ package lk.ijse.gdse66.hibernate.entity;
 
 import lk.ijse.gdse66.hibernate.entity.embedded.MobileNo;
 import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,14 +25,14 @@ public class Customer {
     private String address;
     @Column(name = "cus_salary")
     private double salary;
-    @Transient
+    /*@Transient
     private String dob;
     @CreationTimestamp
     private Timestamp createdDataTime;
     private NameIdentifier nameIdentifier;
     @ElementCollection
     @CollectionTable(name = "cus_no", joinColumns = @JoinColumn(name = "cus_id"))
-    private List<MobileNo> phoneNumbers = new ArrayList<>();
+    private List<MobileNo> phoneNumbers = new ArrayList<>();*/
 
     public Customer() {
     }
@@ -45,8 +42,6 @@ public class Customer {
         this.name = name;
         this.address = address;
         this.salary = salary;
-        this.nameIdentifier = nameIdentifier;
-        this.phoneNumbers = phoneNumbers;
     }
 
     public int getId() {
@@ -81,22 +76,6 @@ public class Customer {
         this.salary = salary;
     }
 
-    public NameIdentifier getNameIdentifier() {
-        return nameIdentifier;
-    }
-
-    public void setNameIdentifier(NameIdentifier nameIdentifier) {
-        this.nameIdentifier = nameIdentifier;
-    }
-
-    public List<MobileNo> getPhoneNumbers() {
-        return phoneNumbers;
-    }
-
-    public void setPhoneNumbers(List<MobileNo> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
@@ -104,8 +83,6 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
-                ", nameIdentifier=" + nameIdentifier +
-                ", phoneNumbers=" + phoneNumbers +
                 '}';
     }
 }

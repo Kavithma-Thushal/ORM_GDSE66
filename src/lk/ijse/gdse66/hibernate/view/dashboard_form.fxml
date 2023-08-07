@@ -12,8 +12,8 @@
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
-        <Button focusTraversable="false" layoutX="85.0" layoutY="252.0" mnemonicParsing="false" onAction="#customerOnAction" prefHeight="31.0" prefWidth="85.0" text="Customer" />
-        <Button focusTraversable="false" layoutX="449.0" layoutY="252.0" mnemonicParsing="false" onAction="#ordersOnAction" prefWidth="85.0" text="Orders" />
-        <Button focusTraversable="false" layoutX="258.0" layoutY="252.0" mnemonicParsing="false" onAction="#itemOnAction" prefHeight="31.0" prefWidth="85.0" text="Item" />
+        <Button focusTraversable="false" layoutX="72.0" layoutY="252.0" mnemonicParsing="false" onAction="#customerOnAction" prefHeight="31.0" prefWidth="104.0" text="Customers" />
+        <Button focusTraversable="false" layoutX="429.0" layoutY="252.0" mnemonicParsing="false" onAction="#ordersOnAction" prefHeight="31.0" prefWidth="104.0" text="Place Orders" />
+        <Button focusTraversable="false" layoutX="248.0" layoutY="252.0" mnemonicParsing="false" onAction="#itemOnAction" prefHeight="31.0" prefWidth="104.0" text="Items" />
     </children>
 </AnchorPane>

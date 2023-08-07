@@ -54,7 +54,6 @@ public class AppInitializer extends Application {
     }
 
     private static Customer getCustomer() {
-
         Customer customer = new Customer();
         customer.setId(1);
         customer.setName("Thushal");

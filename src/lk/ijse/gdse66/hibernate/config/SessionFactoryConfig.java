@@ -18,6 +18,7 @@ public class SessionFactoryConfig {
 
     private SessionFactoryConfig() {
         sessionFactory = new Configuration()
+                .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Item.class)
                 .configure().buildSessionFactory();
     }
@@ -26,7 +27,7 @@ public class SessionFactoryConfig {
         return (sessionFactoryConfig == null) ? sessionFactoryConfig = new SessionFactoryConfig() : sessionFactoryConfig;
     }
 
-    public Session getSession(){
+    public Session getSession() {
         return sessionFactory.openSession();
     }
 }

@@ -2,6 +2,7 @@ package lk.ijse.gdse66.hibernate.config;
 
 import lk.ijse.gdse66.hibernate.entity.Customer;
 import lk.ijse.gdse66.hibernate.entity.Item;
+import lk.ijse.gdse66.hibernate.entity.PlaceOrder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,6 +21,7 @@ public class SessionFactoryConfig {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Item.class)
+                .addAnnotatedClass(PlaceOrder.class)
                 .configure().buildSessionFactory();
     }
 

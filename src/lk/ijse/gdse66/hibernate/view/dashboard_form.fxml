@@ -13,7 +13,7 @@
             </font>
         </Label>
         <Button focusTraversable="false" layoutX="72.0" layoutY="252.0" mnemonicParsing="false" onAction="#customerOnAction" prefHeight="31.0" prefWidth="104.0" text="Customers" />
-        <Button focusTraversable="false" layoutX="429.0" layoutY="252.0" mnemonicParsing="false" onAction="#ordersOnAction" prefHeight="31.0" prefWidth="104.0" text="Place Orders" />
+        <Button focusTraversable="false" layoutX="429.0" layoutY="252.0" mnemonicParsing="false" onAction="#placeOrdersOnAction" prefHeight="31.0" prefWidth="104.0" text="Place Orders" />
         <Button focusTraversable="false" layoutX="248.0" layoutY="252.0" mnemonicParsing="false" onAction="#itemOnAction" prefHeight="31.0" prefWidth="104.0" text="Items" />
     </children>
 </AnchorPane>

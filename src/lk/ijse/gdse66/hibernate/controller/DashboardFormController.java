@@ -32,7 +32,8 @@ public class DashboardFormController {
     }
 
     @FXML
-    private void ordersOnAction(ActionEvent actionEvent) {
-
+    private void placeOrdersOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) this.root.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/gdse66/hibernate/view/placeOrders_form.fxml"))));
     }
 }

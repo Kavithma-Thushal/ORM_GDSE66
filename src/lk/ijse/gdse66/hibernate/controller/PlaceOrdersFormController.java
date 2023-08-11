@@ -9,8 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.gdse66.hibernate.entity.PlaceOrder;
-import lk.ijse.gdse66.hibernate.repo.PlaceOrderRepo;
+import lk.ijse.gdse66.hibernate.entity.Orders;
+import lk.ijse.gdse66.hibernate.repo.OrdersRepo;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -33,7 +33,7 @@ public class PlaceOrdersFormController {
     private TextField txtCustomerId;
     @FXML
     private TextField txtItemCode;
-    private PlaceOrderRepo placeOrderRepo;
+    private OrdersRepo ordersRepo;
 
     public void initialize() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -43,13 +43,13 @@ public class PlaceOrdersFormController {
 
     @FXML
     private void placeOrderOnAction(ActionEvent actionEvent) {
-        PlaceOrder placeOrder = new PlaceOrder();
-        placeOrder.setOrderId(Integer.parseInt(txtOrderId.getText()));
-        placeOrder.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
-        placeOrder.setItemCode(Integer.parseInt(txtItemCode.getText()));
+        Orders orders = new Orders();
+        orders.setOrderId(Integer.parseInt(txtOrderId.getText()));
+        orders.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
+        orders.setItemCode(Integer.parseInt(txtItemCode.getText()));
 
-        placeOrderRepo = new PlaceOrderRepo();
-        boolean isOrdered = placeOrderRepo.placeOrder(placeOrder);
+        ordersRepo = new OrdersRepo();
+        boolean isOrdered = ordersRepo.placeOrder(orders);
         if (isOrdered == true) {
             new Alert(Alert.AlertType.INFORMATION, "Order placed successfully!").show();
         } else {

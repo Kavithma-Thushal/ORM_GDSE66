@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * @since : 5:12 PM - 8/8/2023
  **/
 @Entity
-public class PlaceOrder {
+public class Orders {
     @Id
     private int orderId;
     @CreationTimestamp
@@ -20,10 +20,10 @@ public class PlaceOrder {
     private int customerId;
     private int itemCode;
 
-    public PlaceOrder() {
+    public Orders() {
     }
 
-    public PlaceOrder(int orderId, int customerId, int itemCode) {
+    public Orders(int orderId, int customerId, int itemCode) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.itemCode = itemCode;

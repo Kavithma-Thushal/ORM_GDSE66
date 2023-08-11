@@ -1,7 +1,7 @@
 package lk.ijse.gdse66.hibernate.repo;
 
 import lk.ijse.gdse66.hibernate.config.SessionFactoryConfig;
-import lk.ijse.gdse66.hibernate.entity.PlaceOrder;
+import lk.ijse.gdse66.hibernate.entity.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -10,18 +10,18 @@ import org.hibernate.Transaction;
  * @project : ORM_GDSE66
  * @since : 5:09 PM - 8/8/2023
  **/
-public class PlaceOrderRepo {
+public class OrdersRepo {
     private final Session session;
     private Transaction transaction;
 
-    public PlaceOrderRepo(){
+    public OrdersRepo(){
         session = SessionFactoryConfig.getInstance().getSession();
         transaction = session.beginTransaction();
     }
 
-    public boolean placeOrder(PlaceOrder placeOrder) {
+    public boolean placeOrder(Orders orders) {
         try {
-            session.save(placeOrder);
+            session.save(orders);
             transaction.commit();
             return true;
         } catch (Exception e) {

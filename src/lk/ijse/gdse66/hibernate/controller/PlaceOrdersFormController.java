@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.gdse66.hibernate.entity.Orders;
-import lk.ijse.gdse66.hibernate.dao.OrdersDAO;
+import lk.ijse.gdse66.hibernate.repo.OrdersRepo;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -33,7 +33,7 @@ public class PlaceOrdersFormController {
     private TextField txtCustomerId;
     @FXML
     private TextField txtItemCode;
-    private OrdersDAO ordersDAO;
+    private OrdersRepo ordersRepo;
 
     public void initialize() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -48,8 +48,8 @@ public class PlaceOrdersFormController {
         orders.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
         orders.setItemCode(Integer.parseInt(txtItemCode.getText()));
 
-        ordersDAO = new OrdersDAO();
-        boolean isOrdered = ordersDAO.placeOrder(orders);
+        ordersRepo = new OrdersRepo();
+        boolean isOrdered = ordersRepo.placeOrder(orders);
         if (isOrdered == true) {
             new Alert(Alert.AlertType.INFORMATION, "Order placed successfully!").show();
         } else {

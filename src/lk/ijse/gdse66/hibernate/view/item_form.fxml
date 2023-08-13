@@ -34,7 +34,7 @@
         <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#backOnAction"
                    pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/back.png"/>
+                <Image url="@assets/icons8-back-100.png"/>
             </image>
         </ImageView>
     </children>

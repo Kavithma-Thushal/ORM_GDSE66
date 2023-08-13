@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.gdse66.hibernate.entity.Customer;
-import lk.ijse.gdse66.hibernate.dao.CustomerDAO;
+import lk.ijse.gdse66.hibernate.repo.CustomerRepo;
 
 import java.io.IOException;
 
@@ -31,17 +31,18 @@ public class CustomerFormController {
     private TextField txtAddress;
     @FXML
     private TextField txtSalary;
-    private CustomerDAO customerDAO = new CustomerDAO();
-    private Customer customer = new Customer();
+    private CustomerRepo customerRepo;
 
     @FXML
     private void saveOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
         customer.setName(txtName.getText());
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        boolean isSaved = customerDAO.saveCustomer(customer);
+        customerRepo = new CustomerRepo();
+        boolean isSaved = customerRepo.saveCustomer(customer);
         if (isSaved == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
         } else {
@@ -51,13 +52,12 @@ public class CustomerFormController {
 
     @FXML
     private void searchOnAction(ActionEvent actionEvent) {
-        int id = Integer.parseInt(txtId.getText());
-
-        Customer isSearched = customerDAO.searchCustomer(id);
-        if (isSearched != null) {
-            txtName.setText(String.valueOf(isSearched.getName()));
-            txtAddress.setText(String.valueOf(isSearched.getAddress()));
-            txtSalary.setText(String.valueOf(isSearched.getSalary()));
+        customerRepo = new CustomerRepo();
+        Customer searchedCustomer = customerRepo.searchCustomer(Integer.parseInt(txtId.getText()));
+        if (searchedCustomer != null) {
+            txtName.setText(String.valueOf(searchedCustomer.getName()));
+            txtAddress.setText(String.valueOf(searchedCustomer.getAddress()));
+            txtSalary.setText(String.valueOf(searchedCustomer.getSalary()));
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
@@ -65,12 +65,14 @@ public class CustomerFormController {
 
     @FXML
     private void updateOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
         customer.setName(txtName.getText());
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        boolean isUpdated = customerDAO.updateCustomer(customer);
+        customerRepo = new CustomerRepo();
+        boolean isUpdated = customerRepo.updateCustomer(customer);
         if (isUpdated == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
         } else {
@@ -80,9 +82,11 @@ public class CustomerFormController {
 
     @FXML
     private void deleteOnAction(ActionEvent actionEvent) {
+        Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
 
-        boolean isDeleted = customerDAO.deleteCustomer(customer);
+        customerRepo = new CustomerRepo();
+        boolean isDeleted = customerRepo.deleteCustomer(customer);
         if (isDeleted == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer deleted successfully!").show();
         } else {

@@ -1,4 +1,4 @@
-package lk.ijse.gdse66.hibernate.config;
+package lk.ijse.gdse66.hibernate.util;
 
 import lk.ijse.gdse66.hibernate.entity.Customer;
 import lk.ijse.gdse66.hibernate.entity.Item;
@@ -12,21 +12,22 @@ import org.hibernate.cfg.Configuration;
  * @project : ORM_GDSE66
  * @since : 1:07 PM - 7/29/2023
  **/
-public class SessionFactoryConfig {
+public class SessionFactoryConfiguration {
 
-    private static SessionFactoryConfig sessionFactoryConfig;
+    private static SessionFactoryConfiguration sessionFactoryConfiguration;
     private final SessionFactory sessionFactory;
 
-    private SessionFactoryConfig() {
+    private SessionFactoryConfiguration() {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Item.class)
                 .addAnnotatedClass(Orders.class)
-                .configure().buildSessionFactory();
+                .configure("lk/ijse/gdse66/hibernate/util/hibernate.cfg.xml")
+                .buildSessionFactory();
     }
 
-    public static SessionFactoryConfig getInstance() {
-        return (sessionFactoryConfig == null) ? sessionFactoryConfig = new SessionFactoryConfig() : sessionFactoryConfig;
+    public static SessionFactoryConfiguration getInstance() {
+        return (sessionFactoryConfiguration == null) ? sessionFactoryConfiguration = new SessionFactoryConfiguration() : sessionFactoryConfiguration;
     }
 
     public Session getSession() {

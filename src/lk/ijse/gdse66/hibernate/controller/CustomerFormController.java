@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.gdse66.hibernate.entity.Customer;
-import lk.ijse.gdse66.hibernate.repo.CustomerRepo;
+import lk.ijse.gdse66.hibernate.dao.CustomerDAO;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class CustomerFormController {
     private TextField txtAddress;
     @FXML
     private TextField txtSalary;
-    private CustomerRepo customerRepo;
+    private CustomerDAO customerDAO;
 
     @FXML
     private void saveOnAction(ActionEvent actionEvent) {
@@ -41,8 +41,8 @@ public class CustomerFormController {
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        customerRepo = new CustomerRepo();
-        boolean isSaved = customerRepo.saveCustomer(customer);
+        customerDAO = new CustomerDAO();
+        boolean isSaved = customerDAO.saveCustomer(customer);
         if (isSaved == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
         } else {
@@ -52,8 +52,8 @@ public class CustomerFormController {
 
     @FXML
     private void searchOnAction(ActionEvent actionEvent) {
-        customerRepo = new CustomerRepo();
-        Customer searchedCustomer = customerRepo.searchCustomer(Integer.parseInt(txtId.getText()));
+        customerDAO = new CustomerDAO();
+        Customer searchedCustomer = customerDAO.searchCustomer(Integer.parseInt(txtId.getText()));
         if (searchedCustomer != null) {
             txtName.setText(String.valueOf(searchedCustomer.getName()));
             txtAddress.setText(String.valueOf(searchedCustomer.getAddress()));
@@ -71,8 +71,8 @@ public class CustomerFormController {
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        customerRepo = new CustomerRepo();
-        boolean isUpdated = customerRepo.updateCustomer(customer);
+        customerDAO = new CustomerDAO();
+        boolean isUpdated = customerDAO.updateCustomer(customer);
         if (isUpdated == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
         } else {
@@ -85,8 +85,8 @@ public class CustomerFormController {
         Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
 
-        customerRepo = new CustomerRepo();
-        boolean isDeleted = customerRepo.deleteCustomer(customer);
+        customerDAO = new CustomerDAO();
+        boolean isDeleted = customerDAO.deleteCustomer(customer);
         if (isDeleted == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer deleted successfully!").show();
         } else {

@@ -4,6 +4,7 @@ import lk.ijse.gdse66.hibernate.entity.embedded.MobileNo;
 import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +33,9 @@ public class Customer {
     @ElementCollection
     @CollectionTable(name = "cus_no", joinColumns = @JoinColumn(name = "cus_id"))
     private List<MobileNo> phoneNumbers = new ArrayList<>();*/
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customer")
+    private List<Orders> ordersList=new ArrayList<>();
 
     public Customer() {
     }

@@ -4,6 +4,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 
 /**
@@ -19,6 +21,10 @@ public class Orders {
     private Timestamp orderDate;
     private int customerId;
     private int itemCode;
+
+    @ManyToOne
+    @JoinColumn(name = "cus_id")
+    private Customer customer;
 
     public Orders() {
     }

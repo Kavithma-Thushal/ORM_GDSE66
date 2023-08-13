@@ -31,17 +31,16 @@ public class CustomerFormController {
     private TextField txtAddress;
     @FXML
     private TextField txtSalary;
-    private CustomerDAO customerDAO;
+    private CustomerDAO customerDAO = new CustomerDAO();
+    private Customer customer = new Customer();
 
     @FXML
     private void saveOnAction(ActionEvent actionEvent) {
-        Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
         customer.setName(txtName.getText());
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        customerDAO = new CustomerDAO();
         boolean isSaved = customerDAO.saveCustomer(customer);
         if (isSaved == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
@@ -52,12 +51,13 @@ public class CustomerFormController {
 
     @FXML
     private void searchOnAction(ActionEvent actionEvent) {
-        customerDAO = new CustomerDAO();
-        Customer searchedCustomer = customerDAO.searchCustomer(Integer.parseInt(txtId.getText()));
-        if (searchedCustomer != null) {
-            txtName.setText(String.valueOf(searchedCustomer.getName()));
-            txtAddress.setText(String.valueOf(searchedCustomer.getAddress()));
-            txtSalary.setText(String.valueOf(searchedCustomer.getSalary()));
+        int id = Integer.parseInt(txtId.getText());
+
+        Customer isSearched = customerDAO.searchCustomer(id);
+        if (isSearched != null) {
+            txtName.setText(String.valueOf(isSearched.getName()));
+            txtAddress.setText(String.valueOf(isSearched.getAddress()));
+            txtSalary.setText(String.valueOf(isSearched.getSalary()));
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
@@ -65,13 +65,11 @@ public class CustomerFormController {
 
     @FXML
     private void updateOnAction(ActionEvent actionEvent) {
-        Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
         customer.setName(txtName.getText());
         customer.setAddress(txtAddress.getText());
         customer.setSalary(Double.parseDouble(txtSalary.getText()));
 
-        customerDAO = new CustomerDAO();
         boolean isUpdated = customerDAO.updateCustomer(customer);
         if (isUpdated == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
@@ -82,10 +80,8 @@ public class CustomerFormController {
 
     @FXML
     private void deleteOnAction(ActionEvent actionEvent) {
-        Customer customer = new Customer();
         customer.setId(Integer.parseInt(txtId.getText()));
 
-        customerDAO = new CustomerDAO();
         boolean isDeleted = customerDAO.deleteCustomer(customer);
         if (isDeleted == true) {
             new Alert(Alert.AlertType.INFORMATION, "Customer deleted successfully!").show();

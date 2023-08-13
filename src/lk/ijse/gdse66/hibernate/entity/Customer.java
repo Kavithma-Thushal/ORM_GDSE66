@@ -34,8 +34,8 @@ public class Customer {
     @CollectionTable(name = "cus_no", joinColumns = @JoinColumn(name = "cus_id"))
     private List<MobileNo> phoneNumbers = new ArrayList<>();*/
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customer")
-    private List<Orders> ordersList=new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
+    private List<Orders> ordersList = new ArrayList<>();
 
     public Customer() {
     }

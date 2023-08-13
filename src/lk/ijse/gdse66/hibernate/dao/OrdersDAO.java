@@ -1,6 +1,6 @@
-package lk.ijse.gdse66.hibernate.repo;
+package lk.ijse.gdse66.hibernate.dao;
 
-import lk.ijse.gdse66.hibernate.config.SessionFactoryConfig;
+import lk.ijse.gdse66.hibernate.util.SessionFactoryConfiguration;
 import lk.ijse.gdse66.hibernate.entity.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,12 +10,12 @@ import org.hibernate.Transaction;
  * @project : ORM_GDSE66
  * @since : 5:09 PM - 8/8/2023
  **/
-public class OrdersRepo {
+public class OrdersDAO {
     private final Session session;
     private Transaction transaction;
 
-    public OrdersRepo(){
-        session = SessionFactoryConfig.getInstance().getSession();
+    public OrdersDAO(){
+        session = SessionFactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
     }
 

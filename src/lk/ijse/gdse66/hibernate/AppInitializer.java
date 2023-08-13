@@ -4,12 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lk.ijse.gdse66.hibernate.entity.Customer;
-import lk.ijse.gdse66.hibernate.entity.embedded.MobileNo;
-import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -19,33 +13,6 @@ import java.util.List;
 public class AppInitializer extends Application {
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public static Customer getCustomer() {
-        Customer customer = new Customer();
-        customer.setId(1);
-        customer.setName("Thushal");
-        customer.setAddress("Galle");
-        customer.setSalary(12000);
-
-        extracted(customer);
-        extracted1(customer);
-        return customer;
-    }
-
-    private static void extracted(Customer customer) {
-        NameIdentifier nameIdentifier = new NameIdentifier();
-        nameIdentifier.setFirstName("Meepe Gamage Don");
-        nameIdentifier.setMiddleName("Kavithma");
-        nameIdentifier.setLastName("Thushal");
-        //customer.setNameIdentifier(nameIdentifier);
-    }
-
-    private static void extracted1(Customer customer) {
-        List<MobileNo> mobileNos = new ArrayList<>();
-        MobileNo mobileNo1 = new MobileNo("Home", "0912232212");
-        mobileNos.add(mobileNo1);
-        //customer.setPhoneNumbers(mobileNos);
     }
 
     @Override

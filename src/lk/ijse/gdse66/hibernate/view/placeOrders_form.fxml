@@ -8,21 +8,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse66.hibernate.controller.PlaceOrdersFormController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.gdse66.hibernate.controller.PlaceOrdersFormController">
     <children>
         <Label focusTraversable="false" layoutX="243.0" layoutY="42.0" text="Place Orders">
             <font>
-                <Font name="System Bold" size="25.0" />
+                <Font name="System Bold" size="25.0"/>
             </font>
         </Label>
-        <TextField fx:id="txtOrderId" focusTraversable="false" layoutX="87.0" layoutY="140.0" promptText="order id" />
-        <TextField fx:id="txtOrderDate" editable="false" focusTraversable="false" layoutX="349.0" layoutY="140.0" promptText="order date" />
-        <TextField fx:id="txtCustomerId" focusTraversable="false" layoutX="87.0" layoutY="210.0" promptText="customer id" />
-        <TextField fx:id="txtItemCode" focusTraversable="false" layoutX="349.0" layoutY="210.0" promptText="item code" />
-        <Button focusTraversable="false" layoutX="269.0" layoutY="302.0" mnemonicParsing="false" onAction="#placeOrderOnAction" prefHeight="31.0" prefWidth="97.0" text="Place Order" />
-        <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#backOnAction" pickOnBounds="true" preserveRatio="true">
+        <TextField fx:id="txtOrderId" focusTraversable="false" layoutX="87.0" layoutY="140.0" promptText="order id"/>
+        <TextField fx:id="txtOrderDate" editable="false" focusTraversable="false" layoutX="349.0" layoutY="140.0"
+                   promptText="order date"/>
+        <TextField fx:id="txtCustomerId" focusTraversable="false" layoutX="87.0" layoutY="210.0"
+                   promptText="customer id"/>
+        <TextField fx:id="txtItemCode" focusTraversable="false" layoutX="349.0" layoutY="210.0" promptText="item code"/>
+        <Button focusTraversable="false" layoutX="269.0" layoutY="302.0" mnemonicParsing="false"
+                onAction="#placeOrderOnAction" prefHeight="31.0" prefWidth="97.0" text="Place Order"/>
+        <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#backOnAction"
+                   pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@assets/back.png" />
+                <Image url="@assets/back.png"/>
             </image>
         </ImageView>
     </children>

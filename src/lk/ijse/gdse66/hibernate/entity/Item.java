@@ -1,6 +1,8 @@
 package lk.ijse.gdse66.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -20,6 +22,9 @@ public class Item {
     private double unitPrice;
     @Column(name = "quantity_on_hand")
     private int qtyOnHand;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "itemList")
+    private List<Orders> ordersList = new ArrayList<>();
 
     public Item() {
     }

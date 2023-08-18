@@ -46,7 +46,7 @@ public class OrdersFormController {
     private void placeOrderOnAction(ActionEvent actionEvent) {
         orders.setOrderId(Integer.parseInt(txtOrderId.getText()));
         //orders.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
-        orders.setItemCode(Integer.parseInt(txtItemCode.getText()));
+        //orders.setItemCode(Integer.parseInt(txtItemCode.getText()));
 
         ordersDAO = new OrdersDAO();
         boolean isOrdered = ordersDAO.placeOrder(orders);

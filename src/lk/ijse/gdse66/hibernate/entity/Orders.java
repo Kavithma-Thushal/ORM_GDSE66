@@ -4,6 +4,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -20,11 +22,13 @@ public class Orders {
     @CreationTimestamp
     @Column(name = "order_date")
     private Timestamp orderDate;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    @Column(name = "item_code")
-    private int itemCode;
+
+    @ManyToMany
+    private List<Item> itemList = new ArrayList<>();
 
     public Orders() {
     }
@@ -32,7 +36,7 @@ public class Orders {
     public Orders(int orderId, int customerId, int itemCode) {
         this.orderId = orderId;
         //this.customerId = customerId;
-        this.itemCode = itemCode;
+        //this.itemCode = itemCode;
     }
 
     public int getOrderId() {
@@ -51,20 +55,20 @@ public class Orders {
         this.customerId = customerId;
     }*/
 
-    public int getItemCode() {
+    /*public int getItemCode() {
         return itemCode;
     }
 
     public void setItemCode(int itemCode) {
         this.itemCode = itemCode;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "Orders{" +
                 "orderId=" + orderId +
                 //", customerId=" + customerId +
-                ", itemCode=" + itemCode +
+                //", itemCode=" + itemCode +
                 '}';
     }
 }

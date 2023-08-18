@@ -39,12 +39,4 @@ public class OrderDetailsPrimaryKey implements Serializable {
     public void setItemCode(int itemCode) {
         ItemCode = itemCode;
     }
-
-    @Override
-    public String toString() {
-        return "OrderDetailsPrimaryKey{" +
-                "orderId=" + orderId +
-                ", ItemCode=" + ItemCode +
-                '}';
-    }
 }

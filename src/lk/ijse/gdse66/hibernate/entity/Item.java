@@ -70,14 +70,4 @@ public class Item {
     public void setQtyOnHand(int qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
     }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "code=" + code +
-                ", description='" + description + '\'' +
-                ", unitPrice=" + unitPrice +
-                ", qtyOnHand=" + qtyOnHand +
-                '}';
-    }
 }

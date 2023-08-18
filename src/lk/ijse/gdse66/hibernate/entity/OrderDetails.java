@@ -29,18 +29,9 @@ public class OrderDetails {
     public OrderDetails() {
     }
 
-    public OrderDetails(OrderDetailsPrimaryKey orderDetailsPrimaryKey, int qty, double total) {
-        this.orderDetailsPrimaryKey = orderDetailsPrimaryKey;
+    public OrderDetails(int qty, double total) {
         this.qty = qty;
         this.total = total;
-    }
-
-    public OrderDetailsPrimaryKey getOrderDetailsPrimaryKey() {
-        return orderDetailsPrimaryKey;
-    }
-
-    public void setOrderDetailsPrimaryKey(OrderDetailsPrimaryKey orderDetailsPrimaryKey) {
-        this.orderDetailsPrimaryKey = orderDetailsPrimaryKey;
     }
 
     public int getQty() {
@@ -57,14 +48,5 @@ public class OrderDetails {
 
     public void setTotal(double total) {
         this.total = total;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetails{" +
-                "orderDetailsPrimaryKey=" + orderDetailsPrimaryKey +
-                ", qty=" + qty +
-                ", total=" + total +
-                '}';
     }
 }

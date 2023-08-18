@@ -39,7 +39,6 @@ public class Orders {
     public Orders(int orderId, int customerId, int itemCode) {
         this.orderId = orderId;
         //this.customerId = customerId;
-        //this.itemCode = itemCode;
     }
 
     public int getOrderId() {
@@ -57,21 +56,4 @@ public class Orders {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }*/
-
-    /*public int getItemCode() {
-        return itemCode;
-    }
-
-    public void setItemCode(int itemCode) {
-        this.itemCode = itemCode;
-    }*/
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderId=" + orderId +
-                //", customerId=" + customerId +
-                //", itemCode=" + itemCode +
-                '}';
-    }
 }

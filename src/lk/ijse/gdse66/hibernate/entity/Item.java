@@ -23,8 +23,11 @@ public class Item {
     @Column(name = "quantity_on_hand")
     private int qtyOnHand;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "itemList")
-    private List<Orders> ordersList = new ArrayList<>();
+    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "itemList")
+    private List<Orders> ordersList = new ArrayList<>();*/
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
+    private List<OrderDetails> orderDetailsList = new ArrayList<>();
 
     public Item() {
     }

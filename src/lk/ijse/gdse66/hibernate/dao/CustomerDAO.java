@@ -21,7 +21,7 @@ public class CustomerDAO {
 
     public boolean saveCustomer(Customer customer) {
         try {
-            session.save(customer);
+            session.save(customer) ;
             transaction.commit();
             return true;
         } catch (Exception e) {

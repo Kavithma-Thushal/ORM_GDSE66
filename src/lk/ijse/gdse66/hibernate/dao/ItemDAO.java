@@ -13,6 +13,7 @@ import org.hibernate.Transaction;
 public class ItemDAO {
     private final Session session;
     private Transaction transaction;
+
     public ItemDAO() {
         session = SessionFactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
@@ -27,7 +28,7 @@ public class ItemDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -39,6 +40,8 @@ public class ItemDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            session.close();
         }
     }
 
@@ -51,7 +54,7 @@ public class ItemDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -65,7 +68,7 @@ public class ItemDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }

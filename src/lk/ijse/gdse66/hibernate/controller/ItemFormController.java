@@ -31,20 +31,20 @@ public class ItemFormController {
     private TextField txtUnitPrice;
     @FXML
     private TextField txtQtyOnHand;
+    private Item item = new Item();
     private ItemDAO itemDAO;
 
     @FXML
     private void saveOnAction(ActionEvent actionEvent) {
-        Item item = new Item();
         item.setCode(Integer.parseInt(txtCode.getText()));
         item.setDescription(txtDescription.getText());
         item.setUnitPrice(Double.parseDouble(txtUnitPrice.getText()));
-        item.setQuantityOnHand(Integer.parseInt(txtQtyOnHand.getText()));
+        item.setQtyOnHand(Integer.parseInt(txtQtyOnHand.getText()));
 
         itemDAO = new ItemDAO();
         boolean isSaved = itemDAO.saveItem(item);
         if (isSaved == true) {
-            new Alert(Alert.AlertType.INFORMATION, "Item saved successfully!").show();
+            new Alert(Alert.AlertType.INFORMATION, "Item Saved Successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
@@ -53,11 +53,11 @@ public class ItemFormController {
     @FXML
     private void searchOnAction(ActionEvent actionEvent) {
         itemDAO = new ItemDAO();
-        Item searchedItem = itemDAO.searchItem(Integer.parseInt(txtCode.getText()));
-        if (searchedItem != null) {
-            txtDescription.setText(String.valueOf(searchedItem.getDescription()));
-            txtUnitPrice.setText(String.valueOf(searchedItem.getUnitPrice()));
-            txtQtyOnHand.setText(String.valueOf(searchedItem.getQuantityOnHand()));
+        Item isSearched = itemDAO.searchItem(Integer.parseInt(txtCode.getText()));
+        if (isSearched != null) {
+            txtDescription.setText(String.valueOf(isSearched.getDescription()));
+            txtUnitPrice.setText(String.valueOf(isSearched.getUnitPrice()));
+            txtQtyOnHand.setText(String.valueOf(isSearched.getQtyOnHand()));
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
@@ -65,16 +65,15 @@ public class ItemFormController {
 
     @FXML
     private void updateOnAction(ActionEvent actionEvent) {
-        Item item = new Item();
         item.setCode(Integer.parseInt(txtCode.getText()));
         item.setDescription(txtDescription.getText());
         item.setUnitPrice(Double.parseDouble(txtUnitPrice.getText()));
-        item.setQuantityOnHand(Integer.parseInt(txtQtyOnHand.getText()));
+        item.setQtyOnHand(Integer.parseInt(txtQtyOnHand.getText()));
 
         itemDAO = new ItemDAO();
         boolean isUpdated = itemDAO.updateItem(item);
         if (isUpdated == true) {
-            new Alert(Alert.AlertType.INFORMATION, "Item updated successfully!").show();
+            new Alert(Alert.AlertType.INFORMATION, "Item Updated Successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }
@@ -82,13 +81,12 @@ public class ItemFormController {
 
     @FXML
     private void deleteOnAction(ActionEvent actionEvent) {
-        Item item = new Item();
         item.setCode(Integer.parseInt(txtCode.getText()));
 
         itemDAO = new ItemDAO();
         boolean isDeleted = itemDAO.deleteItem(item);
         if (isDeleted == true) {
-            new Alert(Alert.AlertType.INFORMATION, "Item deleted successfully!").show();
+            new Alert(Alert.AlertType.INFORMATION, "Item Deleted Successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }

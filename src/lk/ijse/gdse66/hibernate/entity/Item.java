@@ -7,26 +7,28 @@ import javax.persistence.*;
  * @project : ORM_GDSE66
  * @since : 7:56 PM - 8/7/2023
  **/
-@Entity(name = "item")
+@Entity
+@Table(name = "item")
 public class Item {
     @Id
-    @Column(name = "item_code")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "code")
     private int code;
-    @Column(name = "item_description")
+    @Column(name = "description")
     private String description;
     @Column(name = "unit_price")
     private double unitPrice;
-    @Column(name = "qty_on_hand")
-    private int quantityOnHand;
+    @Column(name = "quantity_on_hand")
+    private int qtyOnHand;
 
     public Item() {
     }
 
-    public Item(int code, String description, double unitPrice, int quantityOnHand) {
+    public Item(int code, String description, double unitPrice, int qtyOnHand) {
         this.code = code;
         this.description = description;
         this.unitPrice = unitPrice;
-        this.quantityOnHand = quantityOnHand;
+        this.qtyOnHand = qtyOnHand;
     }
 
     public int getCode() {
@@ -53,12 +55,12 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    public int getQuantityOnHand() {
-        return quantityOnHand;
+    public int getQtyOnHand() {
+        return qtyOnHand;
     }
 
-    public void setQuantityOnHand(int quantityOnHand) {
-        this.quantityOnHand = quantityOnHand;
+    public void setQtyOnHand(int qtyOnHand) {
+        this.qtyOnHand = qtyOnHand;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class Item {
                 "code=" + code +
                 ", description='" + description + '\'' +
                 ", unitPrice=" + unitPrice +
-                ", quatityOnHand=" + quantityOnHand +
+                ", qtyOnHand=" + qtyOnHand +
                 '}';
     }
 }

@@ -2,10 +2,7 @@ package lk.ijse.gdse66.hibernate.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -14,17 +11,19 @@ import java.sql.Timestamp;
  * @since : 5:12 PM - 8/8/2023
  **/
 @Entity
+@Table(name = "orders")
 public class Orders {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private int orderId;
     @CreationTimestamp
+    @Column(name = "order_date")
     private Timestamp orderDate;
+    @Column(name = "customer_id")
     private int customerId;
+    @Column(name = "item_code")
     private int itemCode;
-
-    @ManyToOne
-    @JoinColumn(name = "cus_id")
-    private Customer customer;
 
     public Orders() {
     }
@@ -61,7 +60,7 @@ public class Orders {
 
     @Override
     public String toString() {
-        return "PlaceOrder{" +
+        return "Orders{" +
                 "orderId=" + orderId +
                 ", customerId=" + customerId +
                 ", itemCode=" + itemCode +

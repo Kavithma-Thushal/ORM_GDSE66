@@ -14,7 +14,7 @@ public class OrdersDAO {
     private final Session session;
     private Transaction transaction;
 
-    public OrdersDAO(){
+    public OrdersDAO() {
         session = SessionFactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
     }
@@ -28,7 +28,7 @@ public class OrdersDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }

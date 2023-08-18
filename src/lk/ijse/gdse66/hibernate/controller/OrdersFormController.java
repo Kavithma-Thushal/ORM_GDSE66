@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
  * @project : ORM_GDSE66
  * @since : 7:26 AM - 8/7/2023
  **/
-public class PlaceOrdersFormController {
+public class OrdersFormController {
 
     @FXML
     private AnchorPane root;
@@ -33,6 +33,7 @@ public class PlaceOrdersFormController {
     private TextField txtCustomerId;
     @FXML
     private TextField txtItemCode;
+    private Orders orders = new Orders();
     private OrdersDAO ordersDAO;
 
     public void initialize() {
@@ -43,7 +44,6 @@ public class PlaceOrdersFormController {
 
     @FXML
     private void placeOrderOnAction(ActionEvent actionEvent) {
-        Orders orders = new Orders();
         orders.setOrderId(Integer.parseInt(txtOrderId.getText()));
         orders.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
         orders.setItemCode(Integer.parseInt(txtItemCode.getText()));
@@ -51,7 +51,7 @@ public class PlaceOrdersFormController {
         ordersDAO = new OrdersDAO();
         boolean isOrdered = ordersDAO.placeOrder(orders);
         if (isOrdered == true) {
-            new Alert(Alert.AlertType.INFORMATION, "Order placed successfully!").show();
+            new Alert(Alert.AlertType.INFORMATION, "Order Placed Successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again!").show();
         }

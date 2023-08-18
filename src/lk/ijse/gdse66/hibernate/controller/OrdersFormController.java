@@ -45,7 +45,7 @@ public class OrdersFormController {
     @FXML
     private void placeOrderOnAction(ActionEvent actionEvent) {
         orders.setOrderId(Integer.parseInt(txtOrderId.getText()));
-        orders.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
+        //orders.setCustomerId(Integer.parseInt(txtCustomerId.getText()));
         orders.setItemCode(Integer.parseInt(txtItemCode.getText()));
 
         ordersDAO = new OrdersDAO();

@@ -20,8 +20,9 @@ public class Orders {
     @CreationTimestamp
     @Column(name = "order_date")
     private Timestamp orderDate;
-    @Column(name = "customer_id")
-    private int customerId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
     @Column(name = "item_code")
     private int itemCode;
 
@@ -30,7 +31,7 @@ public class Orders {
 
     public Orders(int orderId, int customerId, int itemCode) {
         this.orderId = orderId;
-        this.customerId = customerId;
+        //this.customerId = customerId;
         this.itemCode = itemCode;
     }
 
@@ -42,13 +43,13 @@ public class Orders {
         this.orderId = orderId;
     }
 
-    public int getCustomerId() {
+    /*public int getCustomerId() {
         return customerId;
     }
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
-    }
+    }*/
 
     public int getItemCode() {
         return itemCode;
@@ -62,7 +63,7 @@ public class Orders {
     public String toString() {
         return "Orders{" +
                 "orderId=" + orderId +
-                ", customerId=" + customerId +
+                //", customerId=" + customerId +
                 ", itemCode=" + itemCode +
                 '}';
     }

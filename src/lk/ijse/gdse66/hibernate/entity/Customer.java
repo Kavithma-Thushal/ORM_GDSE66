@@ -1,6 +1,8 @@
 package lk.ijse.gdse66.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -20,6 +22,9 @@ public class Customer {
     private String address;
     @Column(name = "salary")
     private double salary;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
+    private List<Orders> ordersList = new ArrayList<>();
 
     public Customer() {
     }

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lk.ijse.gdse66.hibernate.util.SessionFactoryConfiguration;
 
 /**
  * @author : Kavithma Thushal
@@ -20,5 +21,9 @@ public class AppInitializer extends Application {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/gdse66/hibernate/view/dashboard_form.fxml"))));
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        new Thread(() -> {
+            SessionFactoryConfiguration.getInstance().getSession();
+        }).start();
     }
 }

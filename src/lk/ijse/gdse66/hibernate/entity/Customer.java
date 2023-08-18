@@ -1,11 +1,6 @@
 package lk.ijse.gdse66.hibernate.entity;
 
-import lk.ijse.gdse66.hibernate.entity.embedded.MobileNo;
-import lk.ijse.gdse66.hibernate.entity.embedded.NameIdentifier;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author : Kavithma Thushal
@@ -16,31 +11,20 @@ import java.util.List;
 @Table(name = "customer")
 public class Customer {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cus_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-    @Column(name = "cus_name")
+    @Column(name = "name")
     private String name;
-    @Column(name = "cus_address")
+    @Column(name = "address")
     private String address;
-    @Column(name = "cus_salary")
+    @Column(name = "salary")
     private double salary;
-    /*@Transient
-    private String dob;
-    @CreationTimestamp
-    private Timestamp createdDataTime;
-    private NameIdentifier nameIdentifier;
-    @ElementCollection
-    @CollectionTable(name = "cus_no", joinColumns = @JoinColumn(name = "cus_id"))
-    private List<MobileNo> phoneNumbers = new ArrayList<>();*/
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customer")
-    private List<Orders> ordersList=new ArrayList<>();
 
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, double salary, NameIdentifier nameIdentifier, List<MobileNo> phoneNumbers) {
+    public Customer(int id, String name, String address, double salary) {
         this.id = id;
         this.name = name;
         this.address = address;

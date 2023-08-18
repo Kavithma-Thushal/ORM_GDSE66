@@ -14,7 +14,7 @@ public class CustomerDAO {
     private final Session session;
     private Transaction transaction;
 
-    public CustomerDAO(){
+    public CustomerDAO() {
         session = SessionFactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
     }
@@ -28,7 +28,7 @@ public class CustomerDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -40,6 +40,8 @@ public class CustomerDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            session.close();
         }
     }
 
@@ -52,7 +54,7 @@ public class CustomerDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -66,7 +68,7 @@ public class CustomerDAO {
             e.printStackTrace();
             transaction.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }
